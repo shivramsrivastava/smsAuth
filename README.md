@@ -4,28 +4,80 @@ smsAuth
 An SMS based authentication system
 
 
+#include<stdio.h>
+#include<stdlib.h>
+
+
+int moreFunc(const void * a, const void * b)
+{
+   return ( *(int*)a - *(int*)b );
+}
+
+int lessFunc(const void * a, const void * b)
+{
+   return ( *(int*)b - *(int*)a );
+}
+
+typedef int (*cmpfunc)(const void *, const void*);
+cmpfunc funcarray[2]={moreFunc,lessFunc};
+
+int mysort(int *arr,int len, int flag){
+
+        if (flag == 0 || flag==1){
+                qsort(arr,len, sizeof(int), funcarray[flag]);
+        }
+        return;
+}
+
+
+int print(int *arr, int len){
+
+        int i=0;
+
+        for(i=0;i<len;i++){
+                printf("%d ",arr[i]);
+        }
+        printf("\n\n\n");
+
+}
+
+int main(){
+
+//funcarray[0]=moreFunc;
+//funcarray[1]=lessFunc;
+
+
+        int xarr[5]={99,45,12,-9,1};
+        int yarr[6]={99,45,12,-9,1,98};
+
+        mysort(xarr,5,0);
+        print(xarr,5);
+        mysort(yarr,6,1);
+         print(yarr,6);
+
+
+
+}
+
+
+
 #include <stdlib.h>
 #include "oj.h"
 
 
 
-int getDigit(int N,int *intPtr){
-
-	int tempDigit=0;
-	while(N!=0){
-		tempDigit++;
-		N=N/10;
-	}
-	*intPtr = tempDigit;
-	return 0;
-}
-
 int GetNumLenth(int inputNum, int *pNumLenth){
-        *pNumLenth=-1;
-        int tN=inputNum;
-        tN=(tN>=0)?tN:(-tN==inputNum?-1:-tN);
-        if(tN==0){ *pNumLenth=1; return 0;}
-        return (tN>0)?(getDigit(tN,pNumLenth)):-1;
 
+        if(pNumLenth!=NULL){
+        *pNumLenth=1;
+         while((inputNum/10)!=0){
+                ++*pNumLenth;
+                inputNum=inputNum/10;
+        }
+                return 0;
+        }
+        return -1;
 }
+
+
 
