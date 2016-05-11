@@ -9,3 +9,24 @@ int gloabalArr[408]={0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 int CalcArmstrongNumber(int n){
         return gloabalArr[(n>406?407:n)];
 }
+
+
+int temperatureF2C(char * pInput, char * pOutput)
+{
+	return 0;
+}
+
+
+Convert Fahrenheit temperature to Celsius temperature.
+
+The conversion formula is C = 5/9 x (F - 32). F and C indicate Fahrenheit and Celsius temperature respectively.
+
+A value is rounded to two decimal places.
+
+ 
+
+Example: 
+Input: –40
+
+Output: –40.00
+
